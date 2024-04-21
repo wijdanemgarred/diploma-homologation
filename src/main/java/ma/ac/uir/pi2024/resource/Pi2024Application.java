@@ -1,4 +1,4 @@
-package ma.ac.uir.pi2024;
+package ma.ac.uir.pi2024.resource;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,7 +13,9 @@ import java.util.Collections;
 public class Pi2024Application {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(Pi2024Application.class, args);
+		//SpringApplication.run(AccessingDataMysqlApplication.class, args);
 	}
 
 	@Bean

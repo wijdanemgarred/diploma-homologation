@@ -26,7 +26,7 @@ public class FileResource {
 
     // define location
     public static final String DIRECTORY = System.getProperty("user.home")
-            + "/Downloads/uploads";
+            + "/Downloads";
 
 
     // define method to load files
@@ -43,7 +43,7 @@ public class FileResource {
     }
 
     // define method to download file
-    @GetMapping("download/{filename}")
+    @GetMapping("Downloads/{filename}")
     public ResponseEntity<Resource> downloadFiles(@PathVariable("filename") String filename) throws IOException {
        //find the file
         //this gives us entire path to the location of the file with file name itself
