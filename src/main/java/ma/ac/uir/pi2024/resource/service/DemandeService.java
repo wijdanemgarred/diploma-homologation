@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DemandeService implements DemandeServiceInt{
@@ -16,29 +17,29 @@ public class DemandeService implements DemandeServiceInt{
     @Override
     @Transactional
     public void addDemande(Demande demande) {
-        demandeRepository.addDemande(demande);
+        demandeRepository.save(demande);
     }
 
     @Transactional
-    public Demande getDemande(int id) {
-        return demandeRepository.getDemande(id);
+    public Optional<Demande> getDemande(int id) {
+        return demandeRepository.findById(id);
     }
 
     @Transactional
-    public List<Demande> getDemandes(int sortBy) {
-        return demandeRepository.getDemandes(sortBy);
+    public List<Demande> getDemandes() {
+        return demandeRepository.findAll();
     }
 
     @Override
     @Transactional
     public void deleteDemande(int id) {
-        demandeRepository.deleteDemande(id);
+        demandeRepository.deleteById(id);
     }
 
     @Override
     @Transactional
     public List<Demande> searchDemande(String searchString) {
-        return demandeRepository.searchDemande(searchString);
+        return demandeRepository.findAll(); //review
     }
 
     @Autowired

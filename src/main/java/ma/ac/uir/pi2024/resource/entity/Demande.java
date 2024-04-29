@@ -37,7 +37,6 @@ public class Demande {
     }
 
     public Demande() {
-
     }
 
     public int getId() {
@@ -58,6 +57,26 @@ public class Demande {
 
     public List<Document> getDocuments() {
         return documents;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNumDemande(String numDemande) {
+        this.numDemande = numDemande;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setDocuments(List<Document> documents) {
+        this.documents = documents;
     }
 }
 
