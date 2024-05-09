@@ -1,6 +1,8 @@
 package ma.ac.uir.pi2024.resource.controller;
 
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import ma.ac.uir.pi2024.resource.entity.Demande;
 import ma.ac.uir.pi2024.resource.entity.User;
 import ma.ac.uir.pi2024.resource.exception.ResourceNotFoundException;
@@ -54,6 +56,16 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
+    // Add logout endpoint
+    @PostMapping("/logout")
+    public ResponseEntity<String> logoutUser(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate(); // Invalidate the session
+        }
+        // For simplicity, let's just return a message indicating successful logout
+        return ResponseEntity.ok("User logged out successfully.");
+    }
 
     @GetMapping("/{id}/demandes")
     public ResponseEntity<List<Demande>> getUserDemands(@PathVariable int id) {
@@ -73,7 +85,6 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-
     @PostMapping("/login")
     public ResponseEntity<User> loginUser(@RequestParam("email") String email, @RequestParam("mdp") String mdp) {
         // Retrieve user by email
@@ -89,5 +100,4 @@ public class UserController {
         // If user not found or password doesn't match, return unauthorized
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
     }
-
 }
