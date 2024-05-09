@@ -10,6 +10,9 @@ import { FileService } from './file.service';
 })
 
 export class AppComponent {
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
   //title = 'pi2024-front';
   filenames: string[] = [];
   fileStatus = { status: '', requestType: '', percent: 0 };

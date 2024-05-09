@@ -30,6 +30,11 @@ public class DemandeController {
     public List<Demande> getAllDemande(){
         return demandeRepository.findAll();
     }
+//demanded by usr id
+    @GetMapping("/demandesuser/{userId}")
+    public List<Demande> getDemandeByUserId(@PathVariable("userId") int userId){
+        return demandeRepository.findByUserId(userId);
+    }
 
     // create employee rest api
     @PostMapping("/demandes")
@@ -55,6 +60,7 @@ public class DemandeController {
         demande.setStatut(demandeDetails.getStatut());
         demande.setNumDemande(demandeDetails.getNumDemande());
         demande.setUser(demandeDetails.getUser());
+        demande.setDiplome(demandeDetails.getDiplome());
 
         Demande updatedDemande = demandeRepository.save(demande);
         return ResponseEntity.ok(updatedDemande);
@@ -71,4 +77,6 @@ public class DemandeController {
         response.put("deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
+
+
 }

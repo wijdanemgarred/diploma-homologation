@@ -44,13 +44,14 @@ public class User {
     public User() {
     }
 
-    public User(int id, String nom, String prenom, String email, String mdp, String cin) {
+    public User(int id, String nom, String prenom, String email, String mdp, String cin, String role) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.mdp = mdp;
         this.cin = cin;
+        this.role = role;
     }
 
     public int getId() {
@@ -77,11 +78,43 @@ public class User {
         return cin;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
+    }
+
+    public void setCin(String cin) {
+        this.cin = cin;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public List<Demande> getDemandes() {
         return demandes;
     }
 
     public User(int id) {
         this.id = id;
+    }
+
+    public String getRole() {
+        return role;
     }
 }
