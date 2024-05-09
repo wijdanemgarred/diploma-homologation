@@ -57,15 +57,7 @@ public class UserController {
     }
 
     // Add logout endpoint
-    @PostMapping("/logout")
-    public ResponseEntity<String> logoutUser(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            session.invalidate(); // Invalidate the session
-        }
-        // For simplicity, let's just return a message indicating successful logout
-        return ResponseEntity.ok("User logged out successfully.");
-    }
+
 
     @GetMapping("/{id}/demandes")
     public ResponseEntity<List<Demande>> getUserDemands(@PathVariable int id) {
