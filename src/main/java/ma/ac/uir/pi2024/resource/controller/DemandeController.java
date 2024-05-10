@@ -67,7 +67,8 @@ public class DemandeController {
 
         Demande updatedDemande = demandeRepository.save(demande);
 
-
+        // Envoyer un e-mail lorsque la demande est traitée
+        sendEmailNotification(updatedDemande); // Appeler la méthode pour envoyer l'e-mail de notification
 
         return ResponseEntity.ok(updatedDemande);
     }
