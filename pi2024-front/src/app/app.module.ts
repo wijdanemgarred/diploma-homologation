@@ -10,7 +10,12 @@ import { UpdateDemandeComponent } from './update-demande/update-demande.componen
 import { LoginComponent } from './login/login.component';
 import { CardModule } from 'primeng/card';
 import { MessageService } from 'primeng/api';
-import { DemandeUserComponent } from './demande-user/demande-user.component'; // Import MessageService
+import { DemandeUserComponent } from './demande-user/demande-user.component';
+import { UpdateStatutComponent } from './update-statut/update-statut.component';
+import { UserProfileComponent } from './user-profile/user-profile.component'; // Import MessageService
+import {MatIconModule} from '@angular/material/icon';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +24,9 @@ import { DemandeUserComponent } from './demande-user/demande-user.component'; //
     UpdateDemandeComponent,
     LoginComponent,
     DemandeUserComponent,
+    UpdateStatutComponent,
+    UserProfileComponent,
+    UpdatePasswordComponent
   ],
   imports: [ 
     BrowserModule,
@@ -26,7 +34,8 @@ import { DemandeUserComponent } from './demande-user/demande-user.component'; //
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    CardModule
+    CardModule,
+    MatIconModule 
   ],
   providers: [
     MessageService, // Add MessageService to providers array

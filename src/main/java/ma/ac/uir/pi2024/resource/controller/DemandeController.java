@@ -72,6 +72,17 @@ public class DemandeController {
 
         return ResponseEntity.ok(updatedDemande);
     }
+    @PutMapping("/demandes/updatestatut/{id}")
+    public ResponseEntity<Demande> updateStatut(@PathVariable int id, @RequestParam String statut){
+        Demande demande = demandeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Demande not found with id :" + id));
+
+        demande.setStatut(statut);
+
+        Demande updatedDemande = demandeRepository.save(demande);
+        return ResponseEntity.ok(updatedDemande);
+    }
+
 
     // Méthode pour envoyer un e-mail de notification
     private void sendEmailNotification(Demande demande) {

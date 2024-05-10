@@ -1,2 +1,11 @@
-
+.test {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0; /* Set left position to 0 to start from the left side of the screen */
+    right: 0; /* Set right position to 0 to end at the right side of the screen */
+  }
   
+.nav-item-iconn{
+  right: 50px;
+}

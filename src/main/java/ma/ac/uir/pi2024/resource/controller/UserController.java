@@ -1,11 +1,10 @@
 package ma.ac.uir.pi2024.resource.controller;
 
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import ma.ac.uir.pi2024.resource.entity.Demande;
 import ma.ac.uir.pi2024.resource.entity.User;
 import ma.ac.uir.pi2024.resource.exception.ResourceNotFoundException;
+import ma.ac.uir.pi2024.resource.repository.DemandeRepository;
 import ma.ac.uir.pi2024.resource.repository.UserRepository;
 import ma.ac.uir.pi2024.resource.service.DemandeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +29,7 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+    private DemandeRepository demandeRepository;
 
     // create employee rest api
     @PostMapping("/newuser")
@@ -56,16 +57,6 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
-    // Add logout endpoint
-    @PostMapping("/logout")
-    public ResponseEntity<String> logoutUser(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            session.invalidate(); // Invalidate the session
-        }
-        // For simplicity, let's just return a message indicating successful logout
-        return ResponseEntity.ok("User logged out successfully.");
-    }
 
     @GetMapping("/{id}/demandes")
     public ResponseEntity<List<Demande>> getUserDemands(@PathVariable int id) {
@@ -84,6 +75,14 @@ public class UserController {
 
         return ResponseEntity.ok(user);
     }
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable int id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
+
+        return ResponseEntity.ok(user);
+    }
+
 
     @PostMapping("/login")
     public ResponseEntity<User> loginUser(@RequestParam("email") String email, @RequestParam("mdp") String mdp) {
@@ -99,5 +98,40 @@ public class UserController {
         }
         // If user not found or password doesn't match, return unauthorized
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+    }
+
+    @DeleteMapping("/{userId}/{demandeId}")
+    public ResponseEntity<String> deleteDemande(@PathVariable int userId, @PathVariable int demandeId) {
+        try {
+            demandeRepository.findById(demandeId);
+            demandeRepository.deleteById(demandeId);
+            return new ResponseEntity<>("Demande deleted successfully", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @Transactional
+    @PutMapping("/users/updatePassword")
+    public ResponseEntity<String> updatePassword(
+            @RequestParam String oldPassword,
+            @RequestParam String newPassword,
+            @RequestParam int id) {
+
+        // Retrieve user by ID from the repository
+        Optional<User> userOptional = userRepository.findById(id);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            // Check if the password matches
+            if (user.getMdp().equals(oldPassword)) {
+
+                 userRepository.updatePassword(newPassword, id);
+                return new ResponseEntity<>("Password updated successfully", HttpStatus.OK);
+            }
+        }
+            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+
+
+        // new ResponseEntity<>("Incorrect old password", HttpStatus.BAD_REQUEST);
     }
 }
