@@ -1,0 +1,57 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="test">
+  <nav class="navbar navbar-expand-sm bg-lightblue navbar-dark">
+    <div class="container-fluid">
+      <ul class="navbar-nav d-flex flex-row me-1">
+        <li class="nav-item">
+          <a routerLink="demandes" routerLinkActive="active" class="nav-link">E-quivalence</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="create-demande" routerLinkActive="active" class="nav-link">Ajouter Demande</a>
+        </li>
+        <li class="nav-item center-right">
+          <a class="nav-link"><mat-icon class="mat-24">account_circle_right</mat-icon></a>
+        </li>
+        <li class="nav-item center-right">
+          <a (click)="logout()" class="nav-link"><mat-icon class="mat-24">logout</mat-icon></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<br><br><br><br>
+
+<div class="user-profile-container">
+  <div class="user-profile-header">
+    <h1>User Profile</h1>
+  </div>
+  <div *ngIf="user" class="user-profile-info">
+    
+    <div class="user-profile-item">
+      <label>CIN:</label>
+      <span>{{ user.cin }}</span>
+    </div>
+    <div class="user-profile-item">
+      <label>Email:</label>
+      <span>{{ user.email }}</span>
+    </div>
+    <div class="user-profile-item">
+      <label>Nom:</label>
+      <span>{{ user.nom }}</span>
+    </div>
+    <div class="user-profile-item">
+      <label>Prénom:</label>
+      <span>{{ user.prenom }}</span>
+    </div>
+    <!-- Add more user properties as needed -->
+  </div>
+
+<br> <br>
+    <button (click)="changermdp(user.id)"  class = "btn btn-danger"style="margin-left: 70px"> Changer Mot de Passe</button>
+    <button class = "btn btn-info" style="margin-left: 70px"> Éditer Profil</button>
+    <div *ngIf="!user" class="user-profile-info">
+      <p>Loading...</p>
+    </div>
+    
+</div>

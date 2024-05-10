@@ -1,0 +1,19 @@
+<div class="col-md-6 offset-md-3">
+    <h3>Modifier Demande</h3>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="diplome">TYPE DE DIPLÔME</label>
+            <input type="text" class="form-control" id="diplome" list="diplomeList" [(ngModel)]="demande.diplome" name="diplome">
+            <datalist id="diplomeList">
+                <option value="Diplôme Universitaire de Technologie (DUT)">
+                <option value="Licence (LMD)">
+                <option value="Master (LMD)">
+                <option value="Doctorat (Ph.D.)">
+                <option value="Diplômes d'Ingénieur">
+                <option value="Diplômes des Écoles de Commerce et de Gestion">
+                <option value="Diplômes des Instituts Spécialisés">
+            </datalist>
+        </div>
+        <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+</div>

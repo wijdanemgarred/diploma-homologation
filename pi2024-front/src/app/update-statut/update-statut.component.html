@@ -1,0 +1,33 @@
+<div class="test" (click)="goToDemandeList()">
+    <nav class="navbar navbar-expand-sm bg-lightblue navbar-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a routerLink="Alldemandes" routerLinkActive="active" class="nav-link">E-quivalence</a>
+      </li>
+      <li class="nav-item" class="center-right">
+        <a (click)="logout()" class="nav-link"><mat-icon class="mat-24">logout</mat-icon></a>
+     </li>
+     
+    </ul>
+  </nav>
+</div>
+  <br>
+  <br><br>
+  <br><br>
+  <div class="col-md-6 offset-md-3">
+    <h3>Modifier l'état de la Demande</h3>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="statut">Choisissez le statut</label>
+            <input type="text" class="form-control" id="statut" list="statutList" [(ngModel)]="statut" name="statut">
+            <datalist id="statutList">
+                <option value="En cours">
+                <option value="En attente">
+                <option value="Accordé">
+                <option value="Refusé">
+               
+            </datalist>
+        </div>
+        <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+</div>
