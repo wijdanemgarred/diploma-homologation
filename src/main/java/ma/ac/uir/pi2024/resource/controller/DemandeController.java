@@ -4,13 +4,10 @@ package ma.ac.uir.pi2024.resource.controller;
 import ma.ac.uir.pi2024.resource.entity.Demande;
 import ma.ac.uir.pi2024.resource.exception.ResourceNotFoundException;
 import ma.ac.uir.pi2024.resource.repository.DemandeRepository;
-import ma.ac.uir.pi2024.resource.service.DemandeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -24,6 +21,8 @@ public class DemandeController {
 
     @Autowired
     private DemandeRepository demandeRepository;
+    @Autowired
+    private JavaMailSender emailSender;// Injecter JavaMailSender pour envoyer des e-mails
 
     // get all employees
     @GetMapping("/demandes")
@@ -50,6 +49,10 @@ public class DemandeController {
         return ResponseEntity.ok(demande);
     }
 
+
+
+
+
     // update employee rest api
 
     @PutMapping("/demandes/{id}")
@@ -63,8 +66,26 @@ public class DemandeController {
         demande.setDiplome(demandeDetails.getDiplome());
 
         Demande updatedDemande = demandeRepository.save(demande);
+
+        // Envoyer un e-mail lorsque la demande est traitée
+        sendEmailNotification(updatedDemande); // Appeler la méthode pour envoyer l'e-mail de notification
+
         return ResponseEntity.ok(updatedDemande);
     }
+
+    // Méthode pour envoyer un e-mail de notification
+    private void sendEmailNotification(Demande demande) {
+        SimpleMailMessage message = new SimpleMailMessage(); // Créer un objet SimpleMailMessage pour composer l'e-mail
+        message.setTo(demande.getUser().getEmail()); // Définir l'adresse e-mail de l'utilisateur comme destinataire
+        message.setSubject("Notification de traitement de demande"); // Définir le sujet de l'e-mail
+        message.setText("Votre demande a été traitée avec succès. Consultez votre compte pour vérifier le statut."); // Définir le contenu de l'e-mail
+
+        emailSender.send(message); // Envoyer l'e-mail à l'aide de JavaMailSender
+    }
+
+
+
+
 
     // delete employee rest api
     @DeleteMapping("/demandes/{id}")
