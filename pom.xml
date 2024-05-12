@@ -46,7 +46,12 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-		<!-- Spring Boot Starter Test is already included by default -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>6.1.4</version>
+        </dependency>
+        <!-- Spring Boot Starter Test is already included by default -->
 	</dependencies>
 
 	<build>
