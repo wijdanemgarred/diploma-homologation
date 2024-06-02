@@ -1,26 +1,31 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<div class="test">
-  <nav class="navbar navbar-expand-sm bg-lightblue navbar-dark">
+<div class="background-container">
+  <nav class="navbar navbar-expand-sm bg-light navbar-light full-width-navbar">
     <div class="container-fluid">
-      <ul class="navbar-nav d-flex flex-row me-1">
+      <a class="navbar-brand" routerLink="demandes">E-quivalence</a>
+      <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a routerLink="demandes" routerLinkActive="active" class="nav-link">E-quivalence</a>
+          <a routerLink="create-demande" routerLinkActive="active" class="nav-link">
+              <mat-icon>add_circle</mat-icon>
+              <span class="nav-text">Ajouter Demande</span>
+          </a>
+      </li>
+        <li class="nav-item">
+          <a (click)="profile()" class="nav-link">
+            <span class="material-icons">account_circle</span>
+            
+          </a>
         </li>
         <li class="nav-item">
-          <a routerLink="create-demande" routerLinkActive="active" class="nav-link">Ajouter Demande</a>
-        </li>
-        <li class="nav-item center-right">
-          <a class="nav-link"><mat-icon class="mat-24">account_circle_right</mat-icon></a>
-        </li>
-        <li class="nav-item center-right">
-          <a (click)="logout()" class="nav-link"><mat-icon class="mat-24">logout</mat-icon></a>
+          <a (click)="logout()" class="nav-link">
+            <span class="material-icons">logout</span>
+           
+          </a>
         </li>
       </ul>
     </div>
   </nav>
-</div>
 
-<br><br><br><br>
+<br><br><br><br><br><br>
 
 <div class="user-profile-container">
   <div class="user-profile-header">
@@ -49,7 +54,7 @@
 
 <br> <br>
     <button (click)="changermdp(user.id)"  class = "btn btn-danger"style="margin-left: 70px"> Changer Mot de Passe</button>
-    <button class = "btn btn-info" style="margin-left: 70px"> Éditer Profil</button>
+    <button (click)="update()" class = "btn btn-info" style="margin-left: 70px"> Éditer Profil</button>
     <div *ngIf="!user" class="user-profile-info">
       <p>Loading...</p>
     </div>

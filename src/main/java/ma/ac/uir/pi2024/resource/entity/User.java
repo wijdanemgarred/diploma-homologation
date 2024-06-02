@@ -32,10 +32,12 @@ public class User {
     @Column(name = "role")
     private String role;
 
-;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Demande> demandes;
+
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
     private List<Notification> notifs;

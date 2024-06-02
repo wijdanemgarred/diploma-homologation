@@ -5,10 +5,36 @@
   left: 0; /* Set left position to 0 to start from the left side of the screen */
   right: 0; /* Set right position to 0 to end at the right side of the screen */
 }
-
 .nav-item-iconn{
-right: 50px;
+  right: 50px;
 }
+.nav-text {
+  margin-left: 5px; /* Adjust this value to control the space between the icon and the text */
+}
+
+.navbar {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0; /* Set left position to 0 to start from the left side of the screen */
+  right: 0; /* Set right position to 0 to end at the right side of the screen */
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link .material-icons {
+  margin-right: 5px;
+}
+
 .user-profile-container {
     max-width: 600px;
     margin: auto;

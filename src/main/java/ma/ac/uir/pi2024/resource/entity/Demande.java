@@ -18,27 +18,34 @@ public class Demande {
     @Column(name = "numdemande")
     private String numDemande;
 
-    @Column(name = "diplome")
-    private String diplome;
+
 
     @Column(name = "statut")
     private String statut;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "user_id")
     @JsonIgnore
     private User user;
 
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "demande", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Document> documents;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "demande", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Bac> bac;
 
-    public Demande(int id, String numDemande, String statut, User user,String diplome) {
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "demande", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Diplome> diplome;
+
+    public Demande(int id, String numDemande, String statut, User user) {
         this.id = id;
         this.numDemande = numDemande;
         this.statut = statut;
-        this.diplome = diplome;
         this.user = user;
     }
 
@@ -77,13 +84,6 @@ public class Demande {
         this.statut = statut;
     }
 
-    public String getDiplome() {
-        return diplome;
-    }
-
-    public void setDiplome(String diplome) {
-        this.diplome = diplome;
-    }
 
     public void setUser(User user) {
         this.user = user;
@@ -91,6 +91,22 @@ public class Demande {
 
     public void setDocuments(List<Document> documents) {
         this.documents = documents;
+    }
+
+    public List<Bac> getBac() {
+        return bac;
+    }
+
+    public void setBac(List<Bac> bac) {
+        this.bac = bac;
+    }
+
+    public List<Diplome> getDiplome() {
+        return diplome;
+    }
+
+    public void setDiplome(List<Diplome> diplome) {
+        this.diplome = diplome;
     }
 }
 

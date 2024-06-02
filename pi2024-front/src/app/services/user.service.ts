@@ -27,11 +27,15 @@ export class UserService {
     return this.httpClient.get<User>(`${this.baseURL}/users/${userId}`);
   } 
 
-  updatePassword(oldPassword: String, newPassword: String, id: number): Observable<Object> {
-    return this.httpClient.put(`${this.baseURL}/users/updatePassword?oldPassword=${oldPassword}&newPassword=${newPassword}&id=${id}`, null);
-  }
 
- 
+  updatePassword(oldPassword: string, newPassword: string, id: number): Observable<Object> {
+    return this.httpClient.put(
+      `${this.baseURL}/users/updatePassword?oldPassword=${oldPassword}&newPassword=${newPassword}&id=${id}`, 
+      null, 
+      { responseType: 'text' }
+    );
+  }
+  
   loginUser(email: string, password: string): Observable<User> {
     console.log(password); // Print the password
     const url = `${this.baseURL}/login`;
@@ -40,4 +44,19 @@ export class UserService {
     
   }
 
+  getUsersCount(): Observable<number> {
+    return this.httpClient.get<number>(`${this.baseURL}/count`);
+  }
+
+  createUser(nom: string, prenom: string, email: string, mdp: string, cin: string): Observable<any> {
+    const url = `${this.baseURL}/create?nom=${nom}&prenom=${prenom}&email=${email}&mdp=${mdp}&cin=${cin}`;
+    return this.httpClient.post<any>(url, null); // Send a POST request with an empty body
+  } 
+  
+
+  updateProfile(id: number, nom: string, prenom: string, email: string, cin: string): Observable<any> {
+    const url = `${this.baseURL}/${id}?nom=${nom}&prenom=${prenom}&email=${email}&cin=${cin}`;
+    return this.httpClient.put<any>(url, {});
+  }
+  
 }

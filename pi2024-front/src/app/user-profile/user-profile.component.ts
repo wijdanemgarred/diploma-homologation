@@ -42,4 +42,13 @@ logout(){
 changermdp(userId : number){
   this.router.navigate(['/changermdp', userId]);
 }
+
+profile() {
+  const userId = Number(this.route.snapshot.paramMap.get('userId'));
+  this.router.navigate(['/user-profile', userId]);}
+
+update(){
+  const userId = Number(this.route.snapshot.paramMap.get('userId'));
+  this.router.navigate(['/update-profile', userId]);
+}
 }

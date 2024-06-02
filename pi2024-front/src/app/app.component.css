@@ -9,3 +9,12 @@
 .nav-item-iconn{
   right: 50px;
 }
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1e8efd; /* Optional: Add background color */
+  padding: 10px 0; /* Optional: Add padding for better appearance */
+  text-align: center; /* Optional: Center align text */
+}

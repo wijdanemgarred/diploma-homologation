@@ -46,7 +46,24 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+
+
+
+		<!--mails-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+			<version>3.1.5</version>
+		</dependency>
+
 		<!-- Spring Boot Starter Test is already included by default -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
@@ -57,5 +74,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>

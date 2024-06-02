@@ -15,6 +15,15 @@ import { UpdateStatutComponent } from './update-statut/update-statut.component';
 import { UserProfileComponent } from './user-profile/user-profile.component'; // Import MessageService
 import {MatIconModule} from '@angular/material/icon';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
+import { DiplomeComponent } from './diplome/diplome.component';
+import { UploadComponent } from './upload/upload.component';
+import { DetailsDemandeUserComponent } from './details-demande-user/details-demande-user.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatCardModule } from '@angular/material/card';
+import { CreateAccountComponent } from './create-account/create-account.component';
+import { SuccessDialogComponent } from './success-dialog/success-dialog.component';
+import { UpdateProfilComponent } from './update-profil/update-profil.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +35,14 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
     DemandeUserComponent,
     UpdateStatutComponent,
     UserProfileComponent,
-    UpdatePasswordComponent
+    UpdatePasswordComponent,
+    DiplomeComponent,
+    UploadComponent,
+    DetailsDemandeUserComponent,
+    AdminDashboardComponent,
+    CreateAccountComponent,
+    SuccessDialogComponent,
+    UpdateProfilComponent
   ],
   imports: [ 
     BrowserModule,
@@ -35,10 +51,12 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
     FormsModule,
     ReactiveFormsModule,
     CardModule,
-    MatIconModule 
+    MatIconModule,
+    MatCardModule // <- Add MatCardModule here
   ],
   providers: [
-    MessageService, // Add MessageService to providers array
+    MessageService,
+    provideAnimationsAsync(), // Add MessageService to providers array
   ],
   bootstrap: [AppComponent]
 })

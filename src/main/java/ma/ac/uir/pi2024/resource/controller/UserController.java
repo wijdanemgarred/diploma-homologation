@@ -37,18 +37,54 @@ public class UserController {
         return userRepository.save(user);
     }
 
+    @PostMapping("/create")
+    public ResponseEntity<User> createUser(
+            @RequestParam("nom") String nom,
+            @RequestParam("prenom") String prenom,
+            @RequestParam("email") String email,
+            @RequestParam("mdp") String mdp,
+            @RequestParam("cin") String cin
+    ) {
+        // Create a new User object with the provided parameters
+        User newUser = new User();
+        newUser.setNom(nom);
+        newUser.setPrenom(prenom);
+        newUser.setEmail(email);
+        newUser.setMdp(mdp);
+        newUser.setCin(cin);
+        newUser.setRole("etudiant"); // Set the role to "etudiant"
+
+        // Save the new user to the database
+        User savedUser = userRepository.save(newUser);
+
+        // Return the saved user in the response body
+        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+    }
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable int id, @RequestBody User userDetails) {
+    public ResponseEntity<User> updateUser(
+            @PathVariable int id,
+            @RequestParam(value = "nom", required = false) String nom,
+            @RequestParam(value = "prenom", required = false) String prenom,
+            @RequestParam(value = "email", required = false) String email,
+            @RequestParam(value = "cin", required = false) String cin) {
+
+        // Retrieve the user from the repository
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
 
-        // Update the user details with the provided information
-        user.setNom(userDetails.getNom());
-        user.setPrenom(userDetails.getPrenom());
-        user.setEmail(userDetails.getEmail());
-        user.setMdp(userDetails.getMdp());
-        user.setCin(userDetails.getCin());
-        user.setRole(userDetails.getRole());
+        // Update the user properties if the corresponding parameters are not null
+        if (nom != null) {
+            user.setNom(nom);
+        }
+        if (prenom != null) {
+            user.setPrenom(prenom);
+        }
+        if (email != null) {
+            user.setEmail(email);
+        }
+        if (cin != null) {
+            user.setCin(cin);
+        }
         // Update other user properties as needed
 
         // Save the updated user to the database
@@ -67,6 +103,7 @@ public class UserController {
 
         return ResponseEntity.ok(demands);
     }
+
 
     @GetMapping("/users")
     public ResponseEntity<User> getUserByEmail(@RequestParam String email) {
@@ -113,25 +150,36 @@ public class UserController {
 
     @Transactional
     @PutMapping("/users/updatePassword")
-    public ResponseEntity<String> updatePassword(
+    public ResponseEntity<Map<String, String>> updatePassword(
             @RequestParam String oldPassword,
             @RequestParam String newPassword,
             @RequestParam int id) {
 
-        // Retrieve user by ID from the repository
         Optional<User> userOptional = userRepository.findById(id);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            // Check if the password matches
             if (user.getMdp().equals(oldPassword)) {
-
-                 userRepository.updatePassword(newPassword, id);
-                return new ResponseEntity<>("Password updated successfully", HttpStatus.OK);
+                userRepository.updatePassword(newPassword, id);
+                Map<String, String> response = new HashMap<>();
+                response.put("message", "Password updated successfully");
+                return new ResponseEntity<>(response, HttpStatus.OK);
+            } else {
+                Map<String, String> response = new HashMap<>();
+                response.put("message", "Incorrect old password");
+                return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
             }
+        } else {
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "User not found");
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         }
-            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+    }
 
 
-        // new ResponseEntity<>("Incorrect old password", HttpStatus.BAD_REQUEST);
+
+
+    @GetMapping("/count")
+    public long countUsers() {
+        return userRepository.count();
     }
 }

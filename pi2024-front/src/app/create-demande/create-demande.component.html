@@ -1,37 +1,55 @@
-<div class="col-md-6 offset-md-3">
-    <h3> NOUVELLE DEMANDE </h3>
-    <form (ngSubmit) = "onSubmit()">
-<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Improved Design</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="test">
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" routerLink="demandes">E-quivalence</a>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a (click)="profile(user.id)" class="nav-link"><span class="material-icons">account_circle</span></a>
+          </li>
+          <li class="nav-item">
+            <a (click)="logout()" class="nav-link"><span class="material-icons">logout</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div> <br><br><br><br><br>
+  <div class="form-container">
+    <div class="form-content">
+      <h3><b>Nouvelle Demande</b></h3>
+      <form (ngSubmit)="onSubmit()">
         <div class="form-group">
-            <label> Last Name</label>
-            <input type="text" class ="form-control" id = "lastName"
-                [(ngModel)] = "employee.lastName" name = "lastName">
+          <label for="serie">Série de Bac</label>
+          <input type="text" id="serie" placeholder="Série" [(ngModel)]="bac.serie" name="serie" required>
         </div>
-    
         <div class="form-group">
-            <label> Email Id</label>
-            <input type="text" class ="form-control" id = "emailId"
-                [(ngModel)] = "employee.emailId" name = "emailId">
-        </div>-->
-    
-        <div class="form-group">
-            <label for="diplome">TYPE DE DIPLÔME</label>
-            <input type="text" class="form-control" id="diplome" list="diplomeList" [(ngModel)]="demande.diplome" name="diplome">
-            <datalist id="diplomeList">
-                <option value="Diplôme Universitaire de Technologie (DUT)">
-                <option value="Licence (LMD)">
-                <option value="Master (LMD)">
-                <option value="Doctorat (Ph.D.)">
-                <option value="Diplômes d'Ingénieur">
-                <option value="Diplômes des Écoles de Commerce et de Gestion">
-                <option value="Diplômes des Instituts Spécialisés">
-            </datalist>
+          <label for="pays">Pays de Délivrance</label>
+          <input type="text" id="pays" placeholder="Pays" [(ngModel)]="bac.pays" name="pays" required>
         </div>
-        
-    
-    
-    
-        <button class = "btn btn-success" type ="submit">Submit</button>
-    
-    </form>
-    </div> 
+        <div class="form-group">
+          <label for="date">Date de Délivrance</label>
+          <input type="date" id="date" placeholder="Date" [(ngModel)]="bac.date" name="date" required>
+        </div>
+        <div class="button-container">
+          <button type="submit">Next <mat-icon>navigate_next</mat-icon> <i class="fa fa-angle-right"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  
+  
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+</body>
+</html>

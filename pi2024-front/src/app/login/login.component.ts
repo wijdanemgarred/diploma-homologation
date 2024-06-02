@@ -60,6 +60,9 @@ export class LoginComponent implements OnInit {
         this.errorMessage = 'Invalid email or password.';
       }
     );
+  }
+  navigateToCreateAccount() {
+    this.router.navigate(['/createaccount']);
   }    
 }
 /*

@@ -20,8 +20,8 @@ export class DemandeService {
   getDemandesByUserId(userId: number): Observable<Demande[]> {
     return this.httpClient.get<Demande[]>(`${this.baseURL1}/demandesuser/${userId}`);
   }
-  createDemande(demande: Demande): Observable<Object>{
-    return this.httpClient.post(`${this.baseURL}`, demande);
+  createDemande(userId: number): Observable<Object>{
+    return this.httpClient.put(`http://localhost:8080/demande/create/${userId}`, null);
   }
 
   getDemandeById(id: number): Observable<Demande>{
@@ -35,10 +35,17 @@ export class DemandeService {
   updateStatut(id: number, statut: String): Observable<Object> {
     return this.httpClient.put(`${this.baseURL}/updatestatut/${id}?statut=${statut}`, null);
   }
-  
 
- 
-  deleteDemande(id: number): Observable<Object>{
+  deleteDemande(id: number): Observable<any> {
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
+
+  getDemandesCount(): Observable<number> {
+    return this.httpClient.get<number>(`${this.baseURL1}/count`);
+  }
+
+  getDemandesCountByStatus(status: string): Observable<number> {
+    return this.httpClient.get<number>(`${this.baseURL1}/countbystatus?statut=${status}`);
+  }
+
 }

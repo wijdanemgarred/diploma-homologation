@@ -63,3 +63,32 @@ input[type="password"] {
   margin-top: 10px;
   color: #ff0000;
 }
+
+
+.create-account-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.create-account-link a {
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.create-account-link a:hover {
+  text-decoration: underline;
+}
+
+.background-container {
+  width: 100%;
+  background-image: url('../../assets/images/pexels-matheusnatan-3297593.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh; /* Ensure background covers the entire viewport height */
+  position: absolute;
+  top: 0;
+  left: 0; /* Set left position to 0 to start from the left side of the screen */
+  right: 0; 
+}
