@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Improved Design</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="test">
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" routerLink="demandes">E-quivalence</a>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a (click)="profile(userId)" class="nav-link"><span class="material-icons">account_circle</span></a>
+          </li>
+          <li class="nav-item">
+            <a (click)="logout()" class="nav-link"><span class="material-icons">logout</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div><br>
+  <br>
+  <br>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        <div *ngIf="bacs && bacs.length"><br><br>
+          <h2 class="mb-4">BACCALAURÉAT</h2>
+          
+          
+          <div class="card-container">
+            <div class="card" *ngFor="let bac of bacs">
+              <div class="card-body"><br>
+                <div class="card-label">SÉRIE DE BAC</div>
+                <div class="card-text">{{ bac.serie }}</div>
+                <div class="card-label">PAYS DE DÉLIVRANCE</div>
+                <div class="card-text">{{ bac.pays }}</div>
+                <div class="card-label">DATE DE DÉLIVRANCE</div>
+                <div class="card-text">{{ bac.date }}</div><br>
+                <br>
+              </div>           
+            </div> 
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div *ngIf="diplomes && diplomes.length">
+          <h2 class="mb-4">DIPLÔME OBJET D'ÉQUIVALENCE</h2>
+          <div class="card-container">
+            <div class="card" *ngFor="let diplome of diplomes">
+              <div class="card-body">
+                <div class="card-label">TYPE DE DIPLÔME:</div>
+                <div class="card-text">{{ diplome.type }}</div>
+                <div class="card-label">UNIVERSITÉ DE DÉLIVRANCE:</div>
+                <div class="card-text">{{ diplome.etablissment }}</div>
+                <div class="card-label">DOMAINE:</div>
+                <div class="card-text">{{ diplome.domaine }}</div>
+                <div class="card-label">DATE DE DÉLIVRANCE:</div>
+                <div class="card-text">{{ diplome.date }}</div>
+                <div class="card-label">PAYS DE DÉLIVRANCE:</div>
+                <div class="card-text">{{ diplome.pays }}</div>
+                <div class="card-label">TYPE DE DIPLÔMES MAROCAIN DEMANDÉ:</div>
+                <div class="card-text">{{ diplome.diplomemaroc }}</div>
+              </div>              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+    
+    
+    
+      <div class="container mt-5">
+        <div class="row justify-content-center align-items-center"> <!-- Centering and aligning vertically -->
+          <div class="col-md-8"> <!-- Adjusted column size -->
+            <div class="card">
+              <div class="card-body text-center"> <!-- Centering the content -->
+                <h2 class="card-title mb-4">DOCUMENTS SOUMIS</h2>
+                <div *ngIf="downloadLinks">
+                  <div *ngFor="let link of downloadLinks; let i=index" class="d-inline-block mr-2">
+                    <a [href]="link" target="_blank" class="btn btn-primary document-button">
+                      {{ i === 0 ? 'Pièce d\'identité' : (i === 1 ? 'Baccalauréat ou équivalent' : 'Diplôme objet d\'équivalence') }}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><br>
+      <br>
+      <br>
+      
+
+      

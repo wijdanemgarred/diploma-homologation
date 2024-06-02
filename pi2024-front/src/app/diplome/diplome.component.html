@@ -1,0 +1,138 @@
+<!-- diplome.component.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Improved Design</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="test">
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" routerLink="demandes">E-quivalence</a>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a (click)="profile(user.id)" class="nav-link"><span class="material-icons">account_circle</span></a>
+          </li>
+          <li class="nav-item">
+            <a (click)="logout()" class="nav-link"><span class="material-icons">logout</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <br><br><br><br>
+  <div class="container mt-5">
+    <div class="col-md-8 offset-md-2">
+      <div class="form-container">
+        <h3 class="text-left mb-4">Ajouter Diplome</h3>
+        <form (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="type">TYPE DE DIPLÔME</label>
+                <select class="form-control" id="type" [(ngModel)]="diplome.type" name="type" required>
+                  <option value="" disabled selected>Select Type</option>
+                  <option value="Bac +2">Bac +2</option>
+                  <option value="Licence/LP (Bac+3)">Licence/LP (Bac+3)</option>
+  <option value="Maitrise (Bac+4)">Maitrise (Bac+4)</option>
+  <option value="Bachelor (Bac+3)">Bachelor (Bac+3)</option>
+  <option value="Bachelor (Bac+4)">Bachelor (Bac+4)</option>
+  <option value="Bachelor (Bac+5)">Bachelor (Bac+5)</option>
+  <option value="Ingénieur (Bac+3)">Ingénieur (Bac+3)</option>
+  <option value="Ingénieur (Bac+4)">Ingénieur (Bac+4)</option>
+  <option value="Ingénieur (Bac+5)">Ingénieur (Bac+5)</option>
+  <option value="Master (Bac+5)">Master (Bac+5)</option>
+  <option value="Maitrise (Bac +5)">Maitrise (Bac +5)</option>
+  <option value="Master (Bac+6 ou plus)">Master (Bac+6 ou plus)</option>
+  <option value="Doctorat/PhD">Doctorat/PhD</option>
+  <option value="Médecine générale">Médecine générale</option>
+  <option value="Spécialité en médecine">Spécialité en médecine</option>
+  <option value="Pharmacie">Pharmacie</option>
+  <option value="Spécialité en pharmacie">Spécialité en pharmacie</option>
+  <option value="Médecine dentaire">Médecine dentaire</option>
+
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="etablissment">UNIVERSITÉ DE DÉLIVRANCE</label>
+                <input type="text" class="form-control" id="etablissment" placeholder="Etablissment" [(ngModel)]="diplome.etablissment" name="etablissment" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="domaine">DOMAINE</label>
+                <input type="text" class="form-control" id="domaine" placeholder="Domaine" [(ngModel)]="diplome.domaine" name="domaine" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="date">DATE DE DÉLIVRANCE</label>
+                <input type="date" class="form-control" id="date" placeholder="Date" [(ngModel)]="diplome.date" name="date" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="pays">PAYS DE DÉLIVRANCE</label>
+                <input type="text" class="form-control" id="pays" placeholder="Pays" [(ngModel)]="diplome.pays" name="pays" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="diplomemaroc">TYPE DE DIPLÔMES MAROCAIN DEMANDÉ</label>
+                <select class="form-control" id="diplomemaroc" [(ngModel)]="diplome.diplomemaroc" name="diplomemaroc" required>
+                  <option value="" disabled selected>Select Diplome Maroc</option>
+                  <option value="Architecte">Architecte</option>
+                  <option value="DEUG-Diplôme d'Etudes Universitaires Générales">DEUG-Diplôme d'Etudes Universitaires Générales</option>
+                <option value="DEUP-Diplôme d'Etudes Universitaires Professionnelles">DEUP-Diplôme d'Etudes Universitaires Professionnelles</option>
+                <option value="DEUST-Diplôme d'Etudes Universitaires Scientifiques et Techniques">DEUST-Diplôme d'Etudes Universitaires Scientifiques et Techniques</option>
+                <option value="Diplôme d'Administrateur des Affaires Maritimes">Diplôme d'Administrateur des Affaires Maritimes</option>
+                <option value="Diplôme de Capitaine au Long Cours">Diplôme de Capitaine au Long Cours</option>
+                <option value="Diplôme de l'Institut National des Beaux Arts">Diplôme de l'Institut National des Beaux Arts</option>
+                <option value="Diplôme de Spécialité en Odontologie">Diplôme de Spécialité en Odontologie</option>
+                <option value="Diplôme de Spécialité Médicale">Diplôme de Spécialité Médicale</option>
+                <option value="Diplôme de Spécialité Pharmaceutique et Biologique">Diplôme de Spécialité Pharmaceutique et Biologique</option>
+                <option value="Diplôme de Traducteur">Diplôme de Traducteur</option>
+                <option value="Diplôme du Cycle Normal Docteur Vétérinaire">Diplôme du Cycle Normal Docteur Vétérinaire</option>
+                <option value="Docteur Vétérinaire Spécialisé">Docteur Vétérinaire Spécialisé</option>
+                <option value="Doctorat">Doctorat</option>
+                <option value="DUT-Diplôme Universitaire de Technologie">DUT-Diplôme Universitaire de Technologie</option>
+                <option value="ENCG-Diplôme de l'Ecole Nationale de Commerce et Gestion">ENCG-Diplôme de l'Ecole Nationale de Commerce et Gestion</option>
+                <option value="Ingénieur d'Etat">Ingénieur d'Etat</option>
+             
+                </select>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="button-container">
+            <button type="submit">Next <mat-icon>navigate_next</mat-icon> <i class="fa fa-angle-right"></i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  
+  </body>
+  </html>
+
+<!---
+  
+
+  -->

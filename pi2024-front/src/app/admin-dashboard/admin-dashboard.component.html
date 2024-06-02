@@ -1,0 +1,59 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <div class="test">
+    <nav class="navbar navbar-expand-sm bg-lightblue navbar-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a routerLink="demandes" routerLinkActive="active" class="nav-link">E-quivalence</a>
+      </li>
+      <li class="nav-item" class="center-right">
+        <a (click)="logout()" class="nav-link"><mat-icon class="mat-24">logout</mat-icon></a>
+     </li>
+     
+    </ul>
+  </nav>
+</div>
+  <br>
+  <br><br>
+  <br><br>
+  <h1>Dashboard</h1><br><br>
+  <div class="dashboard-container">
+    <div class="first-line">
+      <mat-card class="dashboard-card">
+        <mat-card-title class="centered-title">Total Students</mat-card-title>
+      <b><mat-card-content class="centered-title">{{ usersCount }}</mat-card-content></b>
+      </mat-card>
+      <mat-card class="dashboard-card">
+        <mat-card-title class="centered-title">Total Demands</mat-card-title>
+      <b> <mat-card-content class="centered-title">{{ demandesCount }}</mat-card-content></b>
+      </mat-card>
+    </div> <br><br>
+
+    <div class="second-line">  <div class="second-line">
+      <mat-card class="dashboard-card">
+        <mat-card-title class="centered-title">En Cours</mat-card-title>
+      <b><mat-card-content class="centered-title">{{ enCoursCount }}</mat-card-content></b>
+      </mat-card>
+      <mat-card class="dashboard-card">
+        <mat-card-title class="centered-title">En Attente</mat-card-title>
+      <b><mat-card-content class="centered-title">{{ enAttenteCount }}</mat-card-content></b>
+      </mat-card>
+      <mat-card class="dashboard-card green-card ">
+        <mat-card-title class="centered-title">Accordé</mat-card-title>
+      <b><mat-card-content class="centered-title">{{ accordeCount }}</mat-card-content></b>
+      </mat-card>
+      <mat-card class="dashboard-card red-card">
+        <mat-card-title class="centered-title">Refusé</mat-card-title>
+       <b> <mat-card-content class="centered-title">{{ refuseCount }}</mat-card-content></b>
+      </mat-card>
+    </div>
+    <br><br>
+
+   
+  </div>
+  <br>
+  <a (click)="Alldemands()" class="nav-link centered-title blue-text">
+    <mat-icon>assignment</mat-icon>
+    View Details
+  </a>
+  

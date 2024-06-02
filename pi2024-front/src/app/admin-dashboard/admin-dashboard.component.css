@@ -1,0 +1,49 @@
+.test {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0; /* Set left position to 0 to start from the left side of the screen */
+    right: 0; /* Set right position to 0 to end at the right side of the screen */
+  }
+  
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .first-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the items horizontally */
+  }
+  
+  
+  .second-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .dashboard-card {
+    width: calc(40% - 10px); /* Adjust width as needed */
+    margin: 5px;
+  }
+  
+  .centered-title {
+    text-align: center; /* Center the title text */
+  }
+
+  .red-card {
+    background-color: rgb(246, 77, 77); /* Set the background color to light red */
+  }
+  .green-card {
+    background-color: lightgreen; /* Set the background color to light green */
+  }
+    
+  .blue-text {
+    color: rgba(86, 168, 244, 0.923); /* Set the text color to blue */
+    display: flex; /* Make the link a flex container */
+    align-items: center; /* Align items vertically in the center */
+    justify-content: center;
+  }
+  
+  
