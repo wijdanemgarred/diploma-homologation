@@ -3,7 +3,7 @@
 ## Overview
 **DiplomaLink** is a web application designed to streamline the diploma homologation process, making it easier and faster for students and administrators to manage homologation requests. The application allows students to submit and track the progress of their diploma homologation requests, while administrators can efficiently manage these requests. 
 
-Using **Spring Boot** for backend security and **Angular** for the front-end user interface, the platform also integrates **blockchain technology** to ensure the authenticity of documents with electronic signatures.
+Using **Spring Boot** for backend security and **Angular** for the front-end user interface.
 
 ## Features
 - **Student Portal**: 
@@ -13,14 +13,10 @@ Using **Spring Boot** for backend security and **Angular** for the front-end use
 
 - **Admin Dashboard**:
   - Manage homologation requests efficiently
-  - Validate document authenticity with blockchain signatures
   - Send notifications to students upon completion
 
 - **Real-time Tracking**:
   - Students can monitor the status of their requests (submitted, in review, completed)
-
-- **Blockchain Integration**:
-  - Electronic signatures ensure document authenticity and prevent fraud
 
 - **Cross-Platform Accessibility**:
   - Responsive design allows access on mobile, tablet, and desktop
@@ -29,7 +25,6 @@ Using **Spring Boot** for backend security and **Angular** for the front-end use
 - **Front-end**: Angular
 - **Back-end**: Spring Boot
 - **Database**: MySQL
-- **Blockchain**: Integrated for document authentication
 - **Email Notifications**: Automatic email updates for request status
 
 ## Project Setup Instructions
