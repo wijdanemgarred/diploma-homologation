@@ -1,4 +1,4 @@
-# DiplomaLink - A Web Application for Diploma Homologation
+# E-quivalence - A Web Application for Diploma Homologation
 
 ## Overview
 **DiplomaLink** is a web application designed to streamline the diploma homologation process, making it easier and faster for students and administrators to manage homologation requests. The application allows students to submit and track the progress of their diploma homologation requests, while administrators can efficiently manage these requests. 
